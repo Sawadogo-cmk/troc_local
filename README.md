@@ -1,38 +1,78 @@
-# Troc Local ♻️
+<div align="center">
 
-Marketplace locale pour **donner ou échanger des objets** entre voisins : annonces avec photos, carte des objets autour de soi, messagerie en temps réel, profils avec avis et compteur d'impact.
+# ♻️ Troc Local
 
-> 🔗 Démo : *(lien à ajouter après déploiement)* · Compte de test : `demo@exemple.fr` / `demo12345` (après `npm run seed`)
+**Donnez ou échangez les objets dont vous n'avez plus besoin, avec vos voisins.**
 
-![Capture d'écran](docs/screenshot.png)
+Une marketplace locale de don et de troc : annonces avec photos, carte des objets autour de vous, messagerie en temps réel, profils avec avis et un assistant IA propulsé par Claude.
 
-## Fonctionnalités
+![Node.js](https://img.shields.io/badge/Node.js-20%2B-339933?logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express-4-000000?logo=express&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-8-4479A1?logo=mysql&logoColor=white)
+![Socket.IO](https://img.shields.io/badge/Socket.IO-temps%20réel-010101?logo=socket.io&logoColor=white)
+![Claude](https://img.shields.io/badge/IA-Claude-D97757)
 
-- Inscription / connexion sécurisées (bcrypt, sessions httpOnly)
-- Publication d'annonces avec jusqu'à 5 photos : format et taille validés, **données GPS supprimées**, variantes 400/800 px générées pour `srcset`
-- Recherche plein texte (index FULLTEXT MySQL), filtres par catégorie et ville, pagination
-- **Carte des annonces** (Leaflet + OpenStreetMap) : rayon de 2 à 50 km autour de sa ville ou de sa position, liste triée par distance
-- **Messagerie en temps réel** (Socket.IO) : messages instantanés, « est en train d'écrire… », notifications sur toutes les pages
-- **Profils publics** : note moyenne, avis, badges (« Premier don », « Très fiable »…), objets donnés et récupérés
-- **Avis après un don** : le propriétaire indique à qui il a donné l'objet, puis les deux personnes peuvent se noter
-- **Compteur d'impact** : kilos d'objets évités à la benne, estimés à partir d'un poids moyen par catégorie
-- **Assistant IA (Claude)**, facultatif :
-  - **recherche en langage naturel** : « un vélo pour aller au lycée à Ouaga » devient mots-clés + catégorie + ville
-  - **modération automatique** des nouvelles annonces (texte et photo) : objets interdits, ventes déguisées, arnaques ; l'auteur reçoit l'explication en temps réel
-  - **réponses suggérées** dans la messagerie, à la demande, que l'utilisateur relit avant d'envoyer
-- Statut des objets (disponible, réservé, donné) et favoris
-- Interface responsive et accessible
+</div>
 
-## Stack
+---
+
+## 📸 Aperçu
+
+<p align="center">
+  <img src="docs/screenshots/accueil.png" alt="Page d'accueil de Troc Local" width="100%">
+</p>
+
+<table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/annonce.png" alt="Fiche d'une annonce"><br><sub><b>Fiche annonce</b> : photos, état, contact direct</sub></td>
+    <td width="50%"><img src="docs/screenshots/carte.png" alt="Carte des annonces"><br><sub><b>Carte</b> : les objets autour de vous, avec un rayon réglable</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/messages.png" alt="Messagerie"><br><sub><b>Messagerie</b> : temps réel, indicateur de saisie, réponses suggérées par l'IA</sub></td>
+    <td><img src="docs/screenshots/profil.png" alt="Profil public"><br><sub><b>Profil</b> : objets donnés, avis, badges</sub></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/publier.png" alt="Publier une annonce"><br><sub><b>Publication</b> : jusqu'à 5 photos, les données GPS sont retirées</sub></td>
+    <td><img src="docs/screenshots/mobile.png" alt="Version mobile" width="260"><br><sub><b>Mobile</b> : interface adaptée aux téléphones</sub></td>
+  </tr>
+</table>
+
+---
+
+## ✨ Fonctionnalités
+
+| | |
+|---|---|
+| 📦 **Annonces** | Jusqu'à 5 photos, catégorie, état, ville. Statuts : disponible, réservé, donné |
+| 🔎 **Recherche** | Plein texte, filtres par catégorie et ville, pagination |
+| 🗺️ **Carte** | Objets géolocalisés (OpenStreetMap), rayon de 2 à 100 km ou tout le pays, liste triée par distance |
+| 💬 **Messagerie** | Une conversation par objet, temps réel, compteur de non-lus, notifications |
+| ⭐ **Avis et profils** | Note après un don, badges (« Premier don », « Très fiable »…), compteur d'impact |
+| ❤️ **Favoris** | Retrouvez les objets qui vous plaisent |
+| 🤖 **Assistant IA** | Recherche en langage naturel, modération des annonces, réponses suggérées *(facultatif)* |
+
+### 🤖 L'assistant IA
+
+Propulsé par **Claude** via le SDK officiel Anthropic. Il est facultatif : sans clé API, le site fonctionne normalement et les fonctions IA sont masquées.
+
+- **Recherche en langage naturel** : « un vélo pour aller au lycée à Ouaga » devient mots-clés, catégorie et ville.
+- **Modération** : chaque nouvelle annonce (texte et photo) est vérifiée. Les objets interdits, les ventes déguisées et les arnaques sont refusés, avec une explication pour l'auteur.
+- **Réponses suggérées** : trois réponses courtes dans la messagerie, proposées à la demande et relues avant envoi.
+
+---
+
+## 🧰 Stack
 
 | Couche | Technologies |
 |---|---|
-| Front | HTML, CSS, JavaScript (vanilla, Fetch API), Leaflet |
-| Back | Node.js, Express, express-session, Multer, Socket.IO, sharp, SDK Anthropic (`@anthropic-ai/sdk`) |
-| Base de données | MySQL (mysql2, requêtes préparées) |
-| Services externes | [Nominatim](https://nominatim.org) (géocodage des villes et quartiers), tuiles OpenStreetMap |
+| Interface | HTML, CSS, JavaScript (vanilla, Fetch API), Leaflet |
+| Serveur | Node.js, Express, express-session, Multer, Socket.IO, sharp, SDK Anthropic |
+| Données | MySQL (mysql2, requêtes préparées), sessions stockées en base |
+| IA | Claude (`@anthropic-ai/sdk`), sorties JSON structurées |
+| Services | Nominatim (localisation des villes), tuiles OpenStreetMap |
 
-## Modèle de données
+<details>
+<summary>📐 Modèle de données</summary>
 
 ```
 users ─┬─< items ─┬─< item_photos
@@ -43,65 +83,100 @@ users ─┬─< items ─┬─< item_photos
 categories ─< items           (avg_weight_kg pour le compteur d'impact)
 ```
 
-## Installation
+</details>
+
+---
+
+## 🚀 Installation
+
+**Prérequis** : Node.js 20 ou plus, MySQL 8.
 
 ```bash
-git clone <ton-repo> && cd troc-local
+git clone https://github.com/Sawadogo-cmk/troc_local.git
+cd troc_local
 npm install
-cp .env.example .env          # puis renseigne tes identifiants MySQL
+cp .env.example .env            # renseignez vos identifiants MySQL et SESSION_SECRET
 mysql -u root -p < sql/schema.sql
-npm run seed                  # optionnel : données de démonstration
-npm run dev                   # http://localhost:3000 (port modifiable dans .env)
+npm run seed                    # facultatif : données de démonstration
+npm run dev                     # http://localhost:3000
 ```
 
-**Pays** : `GEO_COUNTRY` dans `.env` (code ISO à 2 lettres, `bf` par défaut pour le Burkina Faso) limite la recherche des villes à ce pays. Le géocodage respecte les règles d'usage de Nominatim (1 requête par seconde, cache).
+### Variables d'environnement
 
-**Assistant IA** : renseignez `ANTHROPIC_API_KEY` dans `.env` (clé créée sur [platform.claude.com](https://platform.claude.com)) puis redémarrez. Sans clé, le site fonctionne normalement et les fonctions IA sont simplement masquées. Le modèle par défaut est Claude Opus 5.5 (`AI_MODEL` pour en changer).
-
-**Photos existantes** : `npm run photos:migrate` génère les variantes `srcset` des photos envoyées avant la V2 (relançable sans risque).
-
-**Mise à jour depuis la V1** : `mysql -u root -p troc_local < sql/migration-v2.sql` ajoute les coordonnées, les avis et les poids par catégorie sans perdre les données, puis `sql/migration-v3.sql` ajoute la modération.
+| Variable | Rôle |
+|---|---|
+| `PORT` | Port du serveur (3000 par défaut) |
+| `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME` | Connexion MySQL |
+| `SESSION_SECRET` | Clé de signature des sessions (obligatoire, longue et aléatoire) |
+| `GEO_COUNTRY` | Pays de recherche des villes, code ISO à 2 lettres (`bf` : Burkina Faso) |
+| `ANTHROPIC_API_KEY` | Active l'assistant IA (facultatif) |
+| `AI_MODEL` | Modèle Claude utilisé (`claude-opus-5-5` par défaut) |
 
 ### Données de démonstration
 
-`npm run seed` crée 4 comptes à Ouagadougou, Ouaga 2000 et Bobo-Dioulasso (`demo@exemple.fr`, `awa@exemple.fr`, `issouf@exemple.fr`, `mariam@exemple.fr`, mot de passe `demo12345`), 20 annonces illustrées dont 5 déjà données, des conversations et des avis. Le script peut être relancé : il ne remplace que les annonces de ces comptes. Les photos sont dans le domaine public, voir [seed/CREDITS.md](seed/CREDITS.md).
+`npm run seed` crée 4 comptes à Ouagadougou et Bobo-Dioulasso, 15 annonces illustrées et des conversations. Le script peut être relancé sans risque : il ne touche que les comptes de démo.
 
-## Choix techniques et sécurité
+| Compte | Mot de passe |
+|---|---|
+| `demo@exemple.fr` | `demo12345` |
+| `awa@exemple.fr`, `issouf@exemple.fr`, `mariam@exemple.fr` | `demo12345` |
 
-- **Requêtes préparées** partout (`?`) contre l'injection SQL
-- **Échappement HTML** côté front (`esc()`) contre les failles XSS, doublé d'une **Content-Security-Policy** stricte (`script-src 'self'`, aucun script ni style inline)
-- **Contrôle d'accès** : seul le propriétaire peut modifier ou supprimer une annonce ; seuls les participants voient une conversation ou reçoivent ses évènements temps réel ; seuls le donneur et le receveur peuvent laisser un avis, une fois par objet
-- **Protection CSRF** : chaque requête qui modifie des données doit envoyer le jeton de `/api/csrf` dans l'en-tête `X-CSRF-Token` (géré automatiquement par `api()` côté client)
-- **Limite de tentatives** : 8 échecs de connexion par adresse et par email en 15 minutes, 5 créations de compte par heure et par adresse
-- **Sessions en base MySQL** : elles survivent au redémarrage du serveur ; le cookie est `Secure` en `NODE_ENV=production`
-- **Socket.IO partage la session Express** : pas de jeton supplémentaire, connexion refusée sans session
-- **Vie privée** : une annonce est placée au centre de sa commune (jamais l'adresse), légèrement décalée sur la carte ; métadonnées EXIF (dont GPS) retirées des photos
-- **Transaction** lors de la création d'une annonce ; photos supprimées du disque si l'enregistrement échoue
-- Noms de fichiers générés aléatoirement (UUID), types MIME limités
-- **IA** : sorties JSON structurées (`output_config.format`) pour des réponses toujours exploitables ; textes des utilisateurs passés comme données, jamais comme instructions ; repli serveur automatique si le modèle décline une requête ; limite d'appels par adresse IP ; en cas de panne de l'IA, les annonces sont publiées et la recherche classique prend le relais
+Les photos sont dans le domaine public, avec leurs sources dans [seed/CREDITS.md](seed/CREDITS.md).
 
-## Front-End Checklist
+### Mise à jour depuis une version précédente
+
+```bash
+mysql -u root -p troc_local < sql/migration-v2.sql   # coordonnées, avis, poids par catégorie
+mysql -u root -p troc_local < sql/migration-v3.sql   # modération des annonces
+npm run photos:migrate                                # variantes des anciennes photos
+```
+
+---
+
+## 🔐 Sécurité
+
+- **Requêtes préparées** partout, contre l'injection SQL
+- **Protection CSRF** : chaque action qui modifie des données exige un jeton de session
+- **Limite de tentatives** : 8 échecs de connexion par 15 minutes et par adresse ; 5 créations de compte par heure
+- **Sessions en base MySQL**, cookie `Secure` en production, renouvellement à la connexion
+- **Content-Security-Policy** stricte : aucun script ni style inline
+- **Vie privée** : une annonce est placée au centre de sa commune, jamais à l'adresse exacte ; les métadonnées des photos (dont la position GPS) sont retirées
+- **Contrôle d'accès** : seul le propriétaire modifie ou supprime son annonce ; seuls les participants voient une conversation ; un avis ne se laisse qu'une fois, entre le donneur et le receveur
+- **IA** : les textes des utilisateurs sont traités comme des données, jamais comme des instructions ; un repli automatique si le modèle décline une requête ; en cas de panne, les annonces sont publiées sans vérification et la recherche classique reste disponible
+
+---
+
+## ✅ Qualité et accessibilité
 
 Points de la [Front-End Checklist](https://github.com/thedaviddias/Front-End-Checklist) appliqués :
 
-- **Head** : `lang`, `charset`, `viewport`, titre et meta description par page, `theme-color`, favicon SVG, balises Open Graph
-- **HTML** : repères sémantiques (`header`, `nav`, `main`, `footer`), lien d'évitement « Aller au contenu », `type` explicite sur les boutons, page 404 dédiée, `robots.txt`
-- **JavaScript** : scripts externes chargés en `defer`, aucun script inline
-- **Images** : `srcset`/`sizes` avec variantes WebP, `width`/`height` contre les décalages de mise en page, `loading="lazy"` et `decoding="async"`, `alt` renseigné (vide si décoratif)
-- **CSS / typo** : polices chargées avec `preconnect` et `display=swap`, `prefers-reduced-motion` respecté, aucune barre de défilement horizontale sur mobile
-- **Accessibilité** : focus visible, contrastes AA, onglets ARIA navigables au clavier, notes en étoiles utilisables au clavier, `aria-pressed`/`aria-current`/`aria-live`, messages d'erreur en `role="alert"`, cibles tactiles de 44 px
-- **Sécurité** : `Content-Security-Policy`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`, `Permissions-Policy`, `X-Powered-By` retiré
+- **Head** : `lang`, meta description et Open Graph par page, favicon, `theme-color`
+- **HTML sémantique** : `header`, `nav`, `main`, `footer`, lien « Aller au contenu », page 404
+- **Images** : `srcset` WebP, dimensions explicites, chargement différé
+- **Accessibilité** : focus visible, contrastes AA, onglets accessibles au clavier, notes utilisables au clavier, `aria-live` pour les mises à jour, cibles tactiles de 44 px
+- **Performance** : polices avec `preconnect` et `display=swap`, `prefers-reduced-motion` respecté, pas de défilement horizontal sur mobile
 
-Restent à faire : HTTPS en production et tests Lighthouse automatisés.
+Reste à faire : tests automatisés et tests Lighthouse en intégration continue.
 
-## Pistes d'amélioration
+---
 
-- [x] Messagerie en temps réel avec Socket.IO
-- [x] Géolocalisation et recherche par rayon
+## 🗺️ Feuille de route
+
+- [x] Messagerie en temps réel (Socket.IO)
+- [x] Carte et recherche par rayon
+- [x] Profils publics avec avis et badges
 - [x] Redimensionnement des images (sharp)
-- [x] Profils publics avec avis
-- [ ] Propositions d'échange (proposer un de ses objets contre un autre)
+- [x] Protection CSRF et limitation des connexions
+- [x] Assistant IA : recherche, modération, réponses suggérées
+- [ ] Propositions d'échange (proposer un objet en échange d'un autre)
 - [ ] Stockage des images dans le cloud
 - [ ] Tests automatisés (Jest + Supertest)
-- [x] Protection CSRF et limitation des connexions
-- [ ] Limitation générale du nombre de requêtes (reverse proxy ou express-rate-limit)
+- [ ] Limitation générale des requêtes (`express-rate-limit`)
+
+---
+
+<div align="center">
+
+Projet réalisé avec [Claude Code](https://claude.com/claude-code)
+
+</div>
