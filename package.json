@@ -1,0 +1,25 @@
+{
+  "name": "troc-local",
+  "version": "0.1.0",
+  "description": "Marketplace locale d'échange et de don d'objets",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node seed/seed.js",
+    "photos:migrate": "node scripts/migrate-photos.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.11.0",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "express-mysql-session": "^3.0.3",
+    "express-session": "^1.18.1",
+    "leaflet": "^1.9.4",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.11.4",
+    "sharp": "^0.33.5",
+    "socket.io": "^4.8.1"
+  }
+}
