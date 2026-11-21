@@ -16,7 +16,7 @@ Annonces avec photos · carte des objets autour de vous · messagerie en temps r
 
 <br>
 
-<img src="docs/hero.jpg" alt="Quatre écrans de Troc Local : accueil, carte, fiche annonce et messagerie" width="100%">
+<img src="docs/showcase/accueil.jpg" alt="Page d'accueil de Troc Local" width="92%">
 
 </div>
 
@@ -24,42 +24,53 @@ Annonces avec photos · carte des objets autour de vous · messagerie en temps r
 
 ## 👀 Aperçu
 
-<table>
-  <tr>
-    <td align="center" width="50%">
-      <img src="docs/screenshots/accueil.png" alt="Page d'accueil" width="100%"><br>
-      <sub><b>Accueil</b> · recherche, catégories, dernières annonces</sub>
-    </td>
-    <td align="center" width="50%">
-      <img src="docs/screenshots/annonce.png" alt="Fiche d'une annonce" width="100%"><br>
-      <sub><b>Fiche annonce</b> · photos, état, contact direct</sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="docs/screenshots/carte.png" alt="Carte des annonces" width="100%"><br>
-      <sub><b>Carte</b> · les objets autour de vous, rayon réglable</sub>
-    </td>
-    <td align="center">
-      <img src="docs/screenshots/messages.png" alt="Messagerie" width="100%"><br>
-      <sub><b>Messagerie</b> · temps réel et réponses suggérées</sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="docs/screenshots/profil.png" alt="Profil public" width="100%"><br>
-      <sub><b>Profil</b> · objets donnés, avis, badges</sub>
-    </td>
-    <td align="center">
-      <img src="docs/screenshots/publier.png" alt="Publier une annonce" width="100%"><br>
-      <sub><b>Publication</b> · jusqu'à 5 photos, GPS retiré</sub>
-    </td>
-  </tr>
-</table>
+### 🏠 Accueil
+Une recherche en langage naturel, les catégories et les dernières annonces, avec la carte à portée de clic.
 
 <p align="center">
-  <img src="docs/screenshots/mobile.png" alt="Version mobile" width="260"><br>
-  <sub><b>Mobile</b> · interface adaptée aux téléphones</sub>
+  <img src="docs/showcase/accueil.jpg" alt="Page d'accueil de Troc Local" width="92%">
+</p>
+
+### 📄 Fiche annonce
+Les photos, l'état et la disponibilité de l'objet, le profil du donneur et un message direct.
+
+<p align="center">
+  <img src="docs/showcase/annonce.jpg" alt="Fiche d'une annonce" width="92%">
+</p>
+
+### 🗺️ Carte
+Les objets autour de vous, avec un rayon réglable de 2 à 100 km.
+
+<p align="center">
+  <img src="docs/showcase/carte.jpg" alt="Carte des annonces" width="92%">
+</p>
+
+### 💬 Messagerie
+Des conversations en temps réel, avec un indicateur de saisie et des réponses suggérées par l'IA.
+
+<p align="center">
+  <img src="docs/showcase/messages.jpg" alt="Messagerie" width="92%">
+</p>
+
+### 👤 Profil
+Les objets donnés, les avis reçus et les badges de chaque membre.
+
+<p align="center">
+  <img src="docs/showcase/profil.jpg" alt="Profil public" width="92%">
+</p>
+
+### ➕ Publication
+Jusqu'à 5 photos par annonce. Les données de localisation des photos sont retirées avant l'envoi.
+
+<p align="center">
+  <img src="docs/showcase/publier.jpg" alt="Publier une annonce" width="92%">
+</p>
+
+### 📱 Mobile
+Interface adaptée aux téléphones, sans défilement horizontal.
+
+<p align="center">
+  <img src="docs/showcase/mobile.jpg" alt="Version mobile" width="300">
 </p>
 
 ---
